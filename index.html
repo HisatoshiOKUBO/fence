@@ -825,7 +825,7 @@ a { color: inherit; text-decoration: none; }
 /* ================================================================
    設定（Supabase接続情報）
    ================================================================ */
-const SUPABASE_URL     = 'https://eqpbaffvslpxawltrbpc.supabase.co';
+const SUPABASE_URL      = 'https://eqpbaffvslpxawltrbpc.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVxcGJhZmZ2c2xweGF3bHRyYnBjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5NjgyMDgsImV4cCI6MjA5NTU0NDIwOH0.47kauTC5Ybot15RRvsKc0cBZcNWfYEc5rYxUbUBo8_8';
 
 /* ================================================================
@@ -839,26 +839,26 @@ const _headers = () => ({
 });
 
 async function sbGet(table, params = '') {
-  const res = await fetch(`$https://eqpbaffvslpxawltrbpc.supabase.co/rest/v1/${table}?${params}`, { headers: _headers() });
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${params}`, { headers: _headers() });
   if (!res.ok) throw new Error(await res.text());
   return res.json();
 }
 async function sbPost(table, body) {
-  const res = await fetch(`$https://eqpbaffvslpxawltrbpc.supabase.co/rest/v1/${table}`, {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
     method: 'POST', headers: _headers(), body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error(await res.text());
   return res.json();
 }
 async function sbPatch(table, filter, body) {
-  const res = await fetch(`$https://eqpbaffvslpxawltrbpc.supabase.co/rest/v1/${table}?${filter}`, {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${filter}`, {
     method: 'PATCH', headers: _headers(), body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error(await res.text());
   return res.json();
 }
 async function sbDelete(table, filter) {
-  const res = await fetch(`$https://eqpbaffvslpxawltrbpc.supabase.co/rest/v1/${table}?${filter}`, {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${filter}`, {
     method: 'DELETE', headers: { ..._headers(), 'Prefer': '' },
   });
   if (!res.ok) throw new Error(await res.text());
